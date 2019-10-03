@@ -7,9 +7,27 @@
     <title>Document</title>
 </head>
 <body>
-    
+
+    <!-- TODO User Interface -->
+
 </body>
 <script>
+// Game logic for Rock-Paper-Scissors.
+
+// Function for computer selection of either Rock, Paper or Scissors.
+function computerPlay() {
+    // Creates random number 0, 1 or 2.
+    let randomSelector = Math.floor(Math.random() * Math.floor(3)); 
+
+    // Assigns string based on random number.
+    let computerSelection = (randomSelector == 0) ? "Rock" :
+                            (randomSelector == 1) ? "Paper" :
+                                                    "Scissors";
+    // Verify it works.
+    console.log(computerSelection);
+}
+
+computerPlay();
 
 </script>
 </html>
