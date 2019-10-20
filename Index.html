@@ -12,22 +12,75 @@
 
 </body>
 <script>
-// Game logic for Rock-Paper-Scissors.
+// Game logic for rock-paper-scissors.
 
-// Function for computer selection of either Rock, Paper or Scissors.
+// Function for computer selection of either rock, paper or scissors.
 function computerPlay() {
     // Creates random number 0, 1 or 2.
     let randomSelector = Math.floor(Math.random() * Math.floor(3)); 
 
     // Assigns string based on random number.
-    let computerSelection = (randomSelector == 0) ? "Rock" :
-                            (randomSelector == 1) ? "Paper" :
-                                                    "Scissors";
-    // Verify it works.
-    console.log(computerSelection);
+    let assignedElement = (randomSelector == 0) ? "rock" :
+                        (randomSelector == 1) ? "paper" :
+                                                "scissors";
+    // Return selection.
+    return(assignedElement);
+
 }
 
-computerPlay();
+// Get user selection
+function playerInput() {
+
+    // Show user prompt
+    let playerChoice = prompt("Enter either \"Rock\", \"Paper\" or \"Scissors\" to play!").toLowerCase();
+
+    // Verify user input is valid
+    if (playerChoice === ("rock" || "paper" || "scissors") ) {
+        
+        //return value
+        return playerChoice;
+        
+    }
+    // If input is other than expected, notify user.
+    else
+        alert ("You entered an invalid selection. Try again.");
+        
+        
+}
+
+// Function for one game round
+function playRound(playerSelection, computerSelection) {
+
+    // If player selects rock and computer selects scissors, return "Wohoo. Player wins!"
+    if (playerSelection === "rock" && computerSelection === "scissors" ) {
+        return "Wohoo. Player wins!"
+    }
+    // If player selects paper and computer selects rock, return "Wohoo. Player wins!"
+    else if (playerSelection === "paper" && computerSelection === "rock") {
+        return "Wohoo. Player wins!"
+    }
+    // If player scissors and computer selects paper, return "Wohoo. Player wins!"
+    else if (playerSelection === "scissors" && computerSelection === "paper") {
+        return "Wohoo. Player wins!"
+    }
+    // If player and computer select same elements, return "Hmm...Draw. No Winner."
+    else if (playerSelection === computerSelection) {
+        return "Hmm...Draw. No Winner."
+    }
+    // If none of the above are fulfilled, return "Sorry. This time the computer wins!"
+    else
+        return "Sorry. This time the computer wins!"
+
+
+}
+
+// Define selections
+const playerSelection = playerInput();
+const computerSelection = computerPlay();
+
+// Logging 
+console.log(playRound(playerSelection, computerSelection));
+console.log("Player choice: " + playerSelection + " | Computer choice: " + computerSelection);
 
 </script>
 </html>
