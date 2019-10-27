@@ -20,9 +20,9 @@ function computerPlay() {
     let randomSelector = Math.floor(Math.random() * Math.floor(3)); 
 
     // Assigns string based on random number.
-    let assignedElement = (randomSelector == 0) ? "rock" :
-                        (randomSelector == 1) ? "paper" :
-                                                "scissors";
+    let assignedElement =   (randomSelector == 0) ? "rock" :
+                            (randomSelector == 1) ? "paper" :
+                                                    "scissors";
     // Return selection.
     return(assignedElement);
 
@@ -35,15 +35,19 @@ function playerInput() {
     let playerChoice = prompt("Enter either \"Rock\", \"Paper\" or \"Scissors\" to play!").toLowerCase();
 
     // Verify user input is valid
-    if (playerChoice === ("rock" || "paper" || "scissors") ) {
+    if (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors" )  {
         
         //return value
         return playerChoice;
         
     }
     // If input is other than expected, notify user.
-    else
-        alert ("You entered an invalid selection. Try again.");
+    else {
+        alert ("You entered an invalid selection.");
+        return "invalid selection";
+    }
+    
+        
         
         
 }
@@ -66,6 +70,10 @@ function playRound(playerSelection, computerSelection) {
     // If player and computer select same elements, return "Hmm...Draw. No Winner."
     else if (playerSelection === computerSelection) {
         return "Hmm...Draw. No Winner."
+    }
+    // PLACEHOLDER condition for invalid user inputs. TODO: Use this to influece game round counts.
+    else if (playerSelection === "invalid selection") {
+        return "invalid selection. This round does not count."
     }
     // If none of the above are fulfilled, return "Sorry. This time the computer wins!"
     else
