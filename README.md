@@ -13,3 +13,6 @@ Old: if (playerChoice === "rock" || "paper" || "scissors" ))
 New: if (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors" )
 
 playerInput was always returned even if false because second and third string were only evaluated as "true".
+
+//
+Finished game logic. 
