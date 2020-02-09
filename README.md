@@ -16,3 +16,8 @@ playerInput was always returned even if false because second and third string we
 
 //
 Finished game logic. 
+
+//
+Add basic UI.
+
+

@@ -4,11 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Game: Rock-Paper-Scissors</title>
 </head>
 <body>
-
-    <!-- TODO User Interface -->
+    <div id='buttonContainer'>
+        <div id="inputButtons">
+            <button id='rock'>Rock</button>
+            <button id='paper'>Paper</button>
+            <button id='scissors'>Scissors</button>
+        </div>
+    </div>
+    <div id="statusContainer">
+        <div id="roundResult">
+            <p id="selection"></p>
+            <p id="result"></p>
+        </div>
+    </div>
+    
 
 </body>
 <script>
@@ -28,29 +41,31 @@ function computerPlay() {
 
 }
 
-// Get user selection
-function playerInput() {
+// Player action defines input and triggers round.
 
-    // Show user prompt
-    let playerChoice = prompt("Enter either \"Rock\", \"Paper\" or \"Scissors\" to play!").toLowerCase();
+const buttons = document.querySelectorAll('button');
+const roundSelection = document.querySelector('#selection');
+const roundOutcome = document.querySelector('#result');
 
-    // Verify user input is valid
-    if (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors" )  {
+roundSelection.textContent = "Player selected: " + " | " + "Computer selected: " ;
+
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+
+    let playerSelection = button.id;
+    let computerSelection = computerPlay();
+
+    roundSelection.textContent = "Player selected: " + playerSelection.toUpperCase() + " | " 
+                                    + "Computer selected: " + computerSelection.toUpperCase();
+
+    roundOutcome.textContent = playRound(playerSelection, computerSelection);
+    //console.log(playRound(playerSelection, computerSelection));
         
-        //return value
-        return playerChoice;
-        
-    }
-    // If input is other than expected, notify user.
-    else {
-        alert ("You entered an invalid selection. Try again.");
-        return "invalid selection";
-    }
+        })
+    })
     
-        
-        
-        
-}
+
+
 
 // Function for one game round
 function playRound(playerSelection, computerSelection) {
@@ -124,7 +139,7 @@ function game() {
 
 }
 
-game();
+//game();
 
 
 
